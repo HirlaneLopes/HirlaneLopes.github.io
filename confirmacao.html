@@ -104,7 +104,7 @@
     const tabelaDiv = document.getElementById("tabela");
 
     function carregarDados() {
-        get(ref(db, "rifa/pagamentos")).then(snapshot => {
+        get(ref(db, "rifa")).then(snapshot => {
             tabela.innerHTML = "";
 
             if (snapshot.exists()) {
@@ -137,7 +137,7 @@
                         const row = this.closest("tr");
 
                         if (confirm("Tem certeza que deseja marcar este número como pago?")) {
-                            update(ref(db, "rifa/pagamentos/" + numero), { pago: true }).then(() => {
+                            update(ref(db, "rifa/" + numero), { pago: true }).then(() => {
                                 row.classList.add("highlight");
                                 setTimeout(() => row.classList.remove("highlight"), 2000);
                                 carregarDados();
@@ -188,3 +188,7 @@
 
 </body>
 </html>
+
+
+
+
