@@ -104,7 +104,7 @@
     const tabelaDiv = document.getElementById("tabela");
 
     function carregarDados() {
-        get(ref(db, "rifa/pagamentos")).then(snapshot => {
+        get(ref(db, "rifa")).then(snapshot => {
             tabela.innerHTML = "";
 
             if (snapshot.exists()) {
