@@ -21,7 +21,7 @@
             border-radius: 10px;
             position: relative;
             z-index: 1;
-            background: url('imagem/fundoLu.jpg') no-repeat center center;
+            background: url('img/imagemma.jpeg') no-repeat center center;
             background-size: cover;
             opacity: 80%;
         }
@@ -278,18 +278,20 @@
 </head>
 <body>
 <div class="container">
-    <h1 class="titulo"> Rifa Beneficiente Luisa Valadares</h1>
-    <h2 class="subtitulo"> Clique no número escolhido e informe o nome completo e contato.</h2>
+    <h1 class="titulo">Participe da Rifa de Patrocinio e Ajude Nossas Bailarinas!</h1>
+    <h2 class="subtitulo"> Ao adquirir uma rifa, você estara contribuindo para que nossas bailarinas  possam participar do festival de joinville.</h2>
 
     <div class="grid-container">
         <div class="grid" id="grid"></div>
     </div>
 
-    <p class="valor">Valor R$ 30,00 </p>
+    <p class="valor">Valor R$ 10,00 </p>
     <p class="confPag">(Após confirmação do pagamento o número será validado.)</p>
-    <p class="pix">PIX (62)985256056</p>
-    <p class="premio"> Veja o prêmio que você pode ganhar clicando <a href="img/imagemma.jpeg" target="_blank"> aqui!</a></p>
-    <p class="instagram">O premio e um celular Redmi 14 8G de ram camara dual com IA <a href="imagem/imagemLu1.jpeg" target="_blank">aqui!</a></p>
+    <p class="pix">PIX (62)982159962
+    <p class="premio"> Veja o prêmio que você pode ganhar clicando <a href="img/imagemma.jpeg"> aqui!</a></p>
+    <p class="confPag">(O sorteio dia 30 de junho ao vivo pelo instagram </a>
+ <a href="https://www.instagram.com/thaynarachavesoficial" target="_blank">clique aqui</a>
+             
      
     <marquee behavior="scroll" direction="left" scrollamount="10" style=" font-size: yellow; font-weight: bold; font-size: 20px; margin-top: 10px;">
         Obrigado a todos que estão ajudando na rifa da Luisa. Sua contribuição é muito importante Deus abençoe!
@@ -314,14 +316,14 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
     import { getDatabase, ref, set, get } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-database.js";
 
-    const firebaseConfig = {
-  apiKey: "AIzaSyDnnLK6XKU5nopcWTtdmlQe3vjBzPH4124",
-  authDomain: "rifaluisa-c439d.firebaseapp.com",
-  projectId: "rifaluisa-c439d",
-  storageBucket: "rifaluisa-c439d.firebasestorage.app",
-  messagingSenderId: "665017096123",
-  appId: "1:665017096123:web:5ee6bccbaa6fcfbdbb569e",
-  measurementId: "G-ZDTXQ0P4X0"
+   const firebaseConfig = {
+  apiKey: "AIzaSyBqZZgws2GwRogoMHrt6S2Fzn0Pf7-TwsY",
+  authDomain: "rifalaramaria-5a7ae.firebaseapp.com",
+  projectId: "rifalaramaria-5a7ae",
+  storageBucket: "rifalaramaria-5a7ae.firebasestorage.app",
+  messagingSenderId: "57099681434",
+  appId: "1:57099681434:web:18c06be9b12d211309a923",
+   databaseURL: "https://rifalaramaria-5a7ae-default-rtdb.firebaseio.com"
 };
 
 
@@ -341,7 +343,7 @@
         let selectedNumbers = [];
 
         // Criar os números de 1 a 200
-        for (let i = 1; i <= 600; i++) {
+        for (let i = 1; i <= 200; i++) {
             let div = document.createElement("div");
             div.textContent = i;
             div.dataset.numero = i;
