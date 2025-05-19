@@ -44,6 +44,16 @@
             cursor: pointer;
             border-radius: 5px;
         }
+        .btn-excluir {
+            padding: 5px 10px;
+            background: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-left: 5px;
+
+         }   
         .pago {
             color: green;
             font-weight: bold;
@@ -103,7 +113,7 @@
     const tabela = document.getElementById("rifa-tabela");
     const tabelaDiv = document.getElementById("tabela");
 
-    function carregarDados() {
+     function carregarDados() {
         get(ref(db, "rifa")).then(snapshot => {
             tabela.innerHTML = "";
 
@@ -124,13 +134,17 @@
                         <td>${contato ?? '-'}</td>
                         <td class="${pago ? 'pago' : ''}">${pago ? "Pago" : "Pendente"}</td>
                         <td>
-                            ${!pago ? `<button class="btn-pagar" data-numero="${numero}">Marcar como pago</button>` : ""}
+                            ${!pago ? `
+                                <button class="btn-pagar" data-numero="${numero}">Marcar como pago</button>
+                                <button class="btn-excluir" data-numero="${numero}">Excluir</button>
+                            ` : ""}
                         </td>
                     `;
 
                     tabela.appendChild(tr);
                 });
 
+                // Botão "Marcar como pago"
                 document.querySelectorAll(".btn-pagar").forEach(btn => {
                     btn.addEventListener("click", function () {
                         const numero = this.getAttribute("data-numero");
@@ -140,6 +154,23 @@
                             update(ref(db, "rifa/" + numero), { pago: true }).then(() => {
                                 row.classList.add("highlight");
                                 setTimeout(() => row.classList.remove("highlight"), 2000);
+                                carregarDados();
+                            });
+                        }
+                    });
+                });
+
+                // Botão "Excluir"
+                document.querySelectorAll(".btn-excluir").forEach(btn => {
+                    btn.addEventListener("click", function () {
+                        const numero = this.getAttribute("data-numero");
+
+                        if (confirm("Tem certeza que deseja excluir esta escolha?")) {
+                            update(ref(db, "rifa/" + numero), {
+                                nome: null,
+                                contato: null,
+                                pago: null
+                            }).then(() => {
                                 carregarDados();
                             });
                         }
@@ -188,6 +219,7 @@
 
 </body>
 </html>
+
 
 
 
